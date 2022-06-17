@@ -1,6 +1,9 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI my-GitHubActions
+name: my-GitHubActions
+env: 
+  APPLICATION_NAME: "My Express-app-hb" 
+  DEPLOY_PACKAGE_NAME    : "flasc-deploy-ver-${{ github.sha }}"
 
 # Controls when the workflow will run
 on:
@@ -20,6 +23,12 @@ jobs:
      steps:
      - name: Print Hello Message
        run : echo "Hello world from testing"  
+       
+     - name: Execute few commands
+       run : |
+        echo "Message 1"
+        echo "Message 2"  
+        echo "Application name ${{ env.APPLICATION_NAME }}"  
    
    my-deploy:
      runs-on: ubuntu-latest
